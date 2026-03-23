@@ -14,7 +14,10 @@ import serviceAppointmentRouter from './routes/serviceAppointmentRoutes.js';
 const app= express();
 const PORT=4000;
 
-const allowOrigins = ["http://localhost:5173", "http://localhost:5174"];
+const allowOrigins = [
+  "https://medicare-frontend-dsuw.onrender.com",
+  "https://medicare-admin-7y86.onrender.com",
+];
 
 //  MiddleWare
 app.use(cors({
