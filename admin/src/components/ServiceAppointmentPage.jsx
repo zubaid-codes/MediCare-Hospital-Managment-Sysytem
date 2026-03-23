@@ -15,7 +15,7 @@ import {
   Calendar,
   Clock
 } from "lucide-react";
-const API_BASE = "http://localhost:4000";
+const API_BASE = "https://medicare-backend2-rt62.onrender.com";
 
 // helper functions
 function formatTwo(n) {
