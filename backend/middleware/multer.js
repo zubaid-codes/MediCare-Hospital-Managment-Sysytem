@@ -2,9 +2,11 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 
-const uploadDir = "uploads";
+const uploadDir = "/tmp/uploads";
+
+// Ensure directory exists
 if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
+  fs.mkdirSync(uploadDir, { recursive: true });
 }
 
 // Multer setup
@@ -27,20 +29,19 @@ const fileFilter = (req, file, cb) => {
     file.mimetype === "image/jpeg" ||
     file.mimetype === "image/webp"
   ) {
-    cb(null,true);
-  }
-  else{
-    cb(new Error("Only image files are allowed"))
+    cb(null, true);
+  } else {
+    cb(new Error("Only image files are allowed"));
   }
 };
 
 // multer config
 const upload = multer({
-    storage,
-    fileFilter,
-    limits:{
-        fileSize:5*1024*1024,
-    }
+  storage,
+  fileFilter,
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
 });
 
 export default upload;
